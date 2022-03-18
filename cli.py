@@ -10,6 +10,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# python cli.py --method pet --pattern_ids 0 1 2 --data_dir ../data/fewglue/FewGLUE/BoolQ --model_type albert --model_name_or_path albert-xxlarge-v2 --task_name boolq --output_dir ../output
+
 """
 This script can be used to train and evaluate either a regular supervised model or a PET/iPET model on
 one of the supported tasks and datasets.

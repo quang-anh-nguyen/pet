@@ -14,6 +14,8 @@
 This file contains the logic for loading training and test data for all tasks.
 """
 
+# python cli.py --method pet --pattern_ids 0 1 2 --data_dir ../data/fewglue/FewGLUE/BoolQ --model_type albert --model_name_or_path albert-xxlarge-v2 --task_name boolq --output_dir ../output --do_train --do_eval
+
 import csv
 import json
 import os
@@ -548,16 +550,20 @@ class BoolQProcessor(DataProcessor):
     def _create_examples(path: str, set_type: str) -> List[InputExample]:
         examples = []
 
+        idx = 0
+
         with open(path, encoding='utf8') as f:
             for line in f:
                 example_json = json.loads(line)
-                idx = example_json['idx']
+                if 'idx' in example_json.keys():
+                    idx = example_json['idx']
                 label = str(example_json['label']) if 'label' in example_json else None
                 guid = "%s-%s" % (set_type, idx)
                 text_a = example_json['passage']
                 text_b = example_json['question']
                 example = InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label, idx=idx)
                 examples.append(example)
+                idx += 1
 
         return examples
 

@@ -15,7 +15,7 @@ python cli.py \
 --pet_gradient_accumulation_steps 8 \
 --pet_max_steps 250 \
 --pet_max_seq_length 256 \
---pet_repetitions 2 \
+--pet_repetitions 1 \
 --sc_per_gpu_train_batch_size 2 \
 --sc_per_gpu_unlabeled_batch_size 2 \
 --sc_gradient_accumulation_steps 8 \

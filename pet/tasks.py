@@ -557,8 +557,12 @@ class BoolQProcessor(DataProcessor):
                 example_json = json.loads(line)
                 if 'idx' in example_json.keys():
                     idx = example_json['idx']
-                label = str(example_json['label']) if 'label' in example_json else None
-                label = str(example_json['answer']) if 'answer' in example_json else None
+                if 'label' in example_json:
+                    label = str(example_json['label'])
+                elif 'answer' in example_json:
+                    label = str(example_json['answer'])
+                else:
+                    label = None
                 guid = "%s-%s" % (set_type, idx)
                 text_a = example_json['passage']
                 text_b = example_json['question']

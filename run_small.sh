@@ -4,7 +4,7 @@ python cli.py \
 --pattern_ids 0 1 2 \
 --data_dir data/fewglue/FewGLUE/BoolQ \
 --model_type albert \
---model_name_or_path albert-xxlarge-v2 \
+--model_name_or_path bert \
 --task_name boolq \
 --output_dir output/demo \
 --do_train \
